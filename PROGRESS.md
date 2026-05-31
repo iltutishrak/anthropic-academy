@@ -18,7 +18,7 @@ Mode: build per track · Pace: relaxed · Status legend: ⬜ not started · 🔵
 ## Phase 2 — Developer core
 | # | Course | Status | Cert | Track project |
 |---|--------|--------|------|---------------|
-| 4 | Building with the Claude API | ⬜ | ⬜ | A real app using messages, streaming, tool use, prompt caching, extended thinking |
+| 4 | Building with the Claude API | 🔵 | ⬜ | [EC2 Mac forecaster](building-with-the-claude-api/ec2_mac_forecaster.py) built (messages, system, history, streaming, tools, caching, thinking); core concepts done, sub-topics (batches, files, structured outputs) remain |
 | 5 | Claude Code 101 | ⬜ | ⬜ | A clean CLAUDE.md + custom slash command |
 | 6 | Claude Code in Action | ⬜ | ⬜ | A polished hook + subagent for a real workflow |
 
