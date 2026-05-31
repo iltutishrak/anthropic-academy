@@ -11,7 +11,7 @@ Mode: build per track · Pace: relaxed · Status legend: ⬜ not started · 🔵
 ## Phase 1 — Foundations
 | # | Course | Status | Cert | Track project |
 |---|--------|--------|------|---------------|
-| 1 | Claude 101 | 🔵 | ⬜ | Notes + a personal prompt library starter |
+| 1 | Claude 101 | ✅ | ⬜ | [Notes](claude-101/NOTES.md) + [prompt library](claude-101/prompt-library.md) — built |
 | 2 | AI Fluency: Framework & Foundations | ⬜ | ⬜ | One-page "4D framework" cheatsheet |
 | 3 | AI Capabilities and Limitations | ⬜ | ⬜ | A "known failure modes" doc with examples |
 
