@@ -25,7 +25,7 @@ Mode: build per track · Pace: relaxed · Status legend: ⬜ not started · 🔵
 ## Phase 3 — Agentic & extensibility
 | # | Course | Status | Cert | Track project |
 |---|--------|--------|------|---------------|
-| 7 | Introduction to Model Context Protocol | ⬜ | ⬜ | Build an MCP server (tools) from scratch |
+| 7 | Introduction to Model Context Protocol | ✅ | ⬜ | [MCP server + client](mcp-ec2-capacity/) built & run: tools exposed, discovered, and called over stdio |
 | 8 | Model Context Protocol: Advanced Topics | ⬜ | ⬜ | Extend it with resources + prompts + auth |
 | 9 | Introduction to agent skills | ⬜ | ⬜ | Ship one new high-quality agent skill |
 | 10 | Introduction to subagents | ⬜ | ⬜ | A multi-subagent workflow |
