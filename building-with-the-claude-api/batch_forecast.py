@@ -53,9 +53,11 @@ def main() -> None:
     client = anthropic.Anthropic()
 
     # 1. Build one Request per pool. custom_id lets us match results back to pools.
+    #    Note: custom_id must match ^[a-zA-Z0-9_-]{1,64}$ — no dots — so we replace
+    #    the "." in instance types like "mac2-m2.metal" with "-".
     requests = [
         Request(
-            custom_id=f"{itype}__{region}",
+            custom_id=f"{itype}__{region}".replace(".", "-"),
             params=MessageCreateParamsNonStreaming(
                 model=MODEL,
                 max_tokens=256,
