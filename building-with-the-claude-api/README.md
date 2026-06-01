@@ -1,10 +1,23 @@
 # Building with the Claude API — track project
 
-A supply-chain demand-forecasting and intelligence assistant for the AWS EC2 Mac
-instance family, in one file: [`ec2_mac_forecaster.py`](ec2_mac_forecaster.py).
+A set of small, runnable demos for the AWS EC2 Mac instance family, each making one
+part of the Claude API concrete. I built these for the Anthropic Academy "Building
+with the Claude API" track to learn by building, not just watching.
 
-I built this for the Anthropic Academy "Building with the Claude API" track to make
-every core concept concrete in working code rather than just notes.
+## The files
+
+| File | What it teaches |
+| --- | --- |
+| [`ec2_mac_forecaster.py`](ec2_mac_forecaster.py) | The core: messages, system prompt, multi-turn history, streaming, tool use, prompt caching, adaptive thinking — all in one conversation loop |
+| [`structured_forecast.py`](structured_forecast.py) | Structured outputs — a Pydantic schema makes Claude return typed, validated data instead of prose |
+| [`batch_forecast.py`](batch_forecast.py) | Batches — re-forecast the whole fleet in one async job at 50% cost |
+| [`files_demo.py`](files_demo.py) | Files API — upload a capacity report once, ask many questions about it |
+| [`vision_demo.py`](vision_demo.py) | Vision — Claude reads a generated utilization chart and assesses risk |
+
+Each file is self-contained (generates its own inputs where needed) and reads the
+API key from `ANTHROPIC_API_KEY` — never hardcoded.
+
+## The flagship: `ec2_mac_forecaster.py`
 
 ## What it demonstrates
 
