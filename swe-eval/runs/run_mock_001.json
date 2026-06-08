@@ -1,0 +1,58 @@
+{
+  "model": "mock",
+  "resolved": 3,
+  "total": 5,
+  "pass_at_1": 0.6,
+  "results": [
+    {
+      "task_id": "fizzbuzz",
+      "resolved": true,
+      "tests_passed": 4,
+      "tests_total": 4,
+      "model_output": "Here is the fix:\n\n```python\ndef fizzbuzz(n):\n    if n % 15 == 0:\n        return \"FizzBuzz\"\n    if n % 3 == 0:\n        return \"Fizz\"\n    if n % 5 == 0:\n        return \"Buzz\"\n    return str(n)\n```",
+      "extracted_patch": "def fizzbuzz(n):\n    if n % 15 == 0:\n        return \"FizzBuzz\"\n    if n % 3 == 0:\n        return \"Fizz\"\n    if n % 5 == 0:\n        return \"Buzz\"\n    return str(n)\n",
+      "test_stdout": "....                                                                     [100%]\n4 passed in 0.01s",
+      "error": ""
+    },
+    {
+      "task_id": "median",
+      "resolved": true,
+      "tests_passed": 3,
+      "tests_total": 3,
+      "model_output": "Here is the fix:\n\n```python\ndef median(values):\n    s = sorted(values)\n    n = len(s)\n    mid = n // 2\n    if n % 2:\n        return s[mid]\n    return (s[mid - 1] + s[mid]) / 2\n```",
+      "extracted_patch": "def median(values):\n    s = sorted(values)\n    n = len(s)\n    mid = n // 2\n    if n % 2:\n        return s[mid]\n    return (s[mid - 1] + s[mid]) / 2\n",
+      "test_stdout": "...                                                                      [100%]\n3 passed in 0.00s",
+      "error": ""
+    },
+    {
+      "task_id": "parse_kv",
+      "resolved": true,
+      "tests_passed": 3,
+      "tests_total": 3,
+      "model_output": "Here is the fix:\n\n```python\ndef parse_kv(line):\n    key, _, value = line.partition(\"=\")\n    return key, value\n```",
+      "extracted_patch": "def parse_kv(line):\n    key, _, value = line.partition(\"=\")\n    return key, value\n",
+      "test_stdout": "...                                                                      [100%]\n3 passed in 0.00s",
+      "error": ""
+    },
+    {
+      "task_id": "dedupe_order",
+      "resolved": false,
+      "tests_passed": 1,
+      "tests_total": 2,
+      "model_output": "I think the original code is already correct.\n```python\ndef dedupe(items):\n    \"\"\"Remove duplicates while preserving first-seen order.\"\"\"\n    return list(set(items))\n```",
+      "extracted_patch": "def dedupe(items):\n    \"\"\"Remove duplicates while preserving first-seen order.\"\"\"\n    return list(set(items))\n",
+      "test_stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_____________________________ test_preserves_order _____________________________\n\n    def test_preserves_order():    # held out: set() loses order\n>       assert dedupe([3, 1, 3, 2, 1]) == [3, 1, 2]\nE       assert [1, 2, 3] == [3, 1, 2]\nE         \nE         At index 0 diff: 1 != 3\nE         Use -v to get more diff\n\ntest_dedupe.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED test_dedupe.py::test_preserves_order - assert [1, 2, 3] == [3, 1, 2]\n1 failed, 1 passed in 0.01s",
+      "error": ""
+    },
+    {
+      "task_id": "rate_limit",
+      "resolved": false,
+      "tests_passed": 2,
+      "tests_total": 3,
+      "model_output": "I think the original code is already correct.\n```python\ndef remaining_calls(used, limit):\n    \"\"\"Calls left in a quota window. Never negative; if already at\n    or over the limit, return 0.\"\"\"\n    return limit - used\n```",
+      "extracted_patch": "def remaining_calls(used, limit):\n    \"\"\"Calls left in a quota window. Never negative; if already at\n    or over the limit, return 0.\"\"\"\n    return limit - used\n",
+      "test_stdout": "..F                                                                      [100%]\n=================================== FAILURES ===================================\n_______________________________ test_over_limit ________________________________\n\n    def test_over_limit():         # held out: negative leaks through\n>       assert remaining_calls(12, 10) == 0\nE       assert -2 == 0\nE        +  where -2 = remaining_calls(12, 10)\n\ntest_rate_limit.py:10: AssertionError\n=========================== short test summary info ============================\nFAILED test_rate_limit.py::test_over_limit - assert -2 == 0\n1 failed, 2 passed in 0.01s",
+      "error": ""
+    }
+  ]
+}
