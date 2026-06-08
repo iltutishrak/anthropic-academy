@@ -8,13 +8,21 @@ exposes it as an MCP server instead of baking it into one app — so any MCP hos
 (Claude Code, Claude Desktop, Cursor) can plug in and use it. Write once, plug in
 anywhere.
 
-## What it exposes
+## What it exposes — all three MCP primitives
 
-**Tools** (model-callable functions):
+**Tools** (model-controlled functions):
 - `get_demand_forecast(instance_type, region, horizon_weeks)` — per-week peak-host forecast
 - `get_capacity(instance_type, region)` — current allocation, utilization, headroom
 
-(The advanced MCP track adds **resources** and **prompts** on top of this.)
+**Resources** (app/user-controlled data, read into context by URI):
+- `handbook://capacity` — the capacity planning handbook (static reference)
+- `pool://{instance_type}/{region}` — a live pool snapshot (templated)
+
+**Prompts** (user-invoked reusable templates, like slash commands):
+- `weekly_capacity_review(region)` — a full per-pool review instruction
+
+The mental model: **tools are verbs** the model calls, **resources are nouns** the
+host reads, **prompts are templates** the user triggers.
 
 ## How it works
 

@@ -59,6 +59,38 @@ async def main() -> None:
                 if block.type == "text":
                     print(json.dumps(json.loads(block.text), indent=2))
 
+            # 5. RESOURCES — data the host reads (not called). List, then read one.
+            print("\n" + "=" * 60)
+            print("RESOURCES THIS SERVER EXPOSES")
+            print("=" * 60)
+            resources = await session.list_resources()
+            for r in resources.resources:
+                print(f"  - {r.uri}: {r.name}")
+            templates = await session.list_resource_templates()
+            for t in templates.resourceTemplates:
+                print(f"  - {t.uriTemplate} (templated): {t.name}")
+
+            print("\n  reading handbook://capacity ...")
+            content = await session.read_resource("handbook://capacity")
+            first = content.contents[0]
+            print("  " + first.text.splitlines()[0])  # first line of the handbook
+
+            # 6. PROMPTS — reusable templates the user invokes. List, then expand one.
+            print("\n" + "=" * 60)
+            print("PROMPTS THIS SERVER EXPOSES")
+            print("=" * 60)
+            prompts = await session.list_prompts()
+            for p in prompts.prompts:
+                args = ", ".join(a.name for a in (p.arguments or []))
+                print(f"  - {p.name}({args}): {p.description}")
+
+            print("\n  expanding weekly_capacity_review(region='eu-west-1') ...")
+            got = await session.get_prompt("weekly_capacity_review", {"region": "eu-west-1"})
+            for msg in got.messages:
+                if msg.content.type == "text":
+                    print("  ---")
+                    print("  " + msg.content.text.replace("\n", "\n  "))
+
 
 if __name__ == "__main__":
     asyncio.run(main())
